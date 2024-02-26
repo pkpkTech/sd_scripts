@@ -49,10 +49,12 @@ def merge(args):
     for model in args.models:
         if not model.endswith("safetensors"):
             logger.info(f"Model {model} is not a safetensors model")
-            exit()
+            # exit()
+            return
         if not os.path.isfile(model):
             logger.info(f"Model {model} does not exist")
-            exit()
+            # exit()
+            return
 
     assert args.ratios is None or len(args.models) == len(args.ratios), "ratios must be the same length as models"
 

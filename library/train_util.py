@@ -3439,7 +3439,8 @@ def read_config_from_file(args: argparse.Namespace, parser: argparse.ArgumentPar
         # check if config file exists
         if os.path.exists(config_path):
             logger.error(f"Config file already exists. Aborting... / 出力先の設定ファイルが既に存在します: {config_path}")
-            exit(1)
+            # exit(1)
+            return
 
         # convert args to dictionary
         args_dict = vars(args)
@@ -3467,11 +3468,13 @@ def read_config_from_file(args: argparse.Namespace, parser: argparse.ArgumentPar
             toml.dump(args_dict, f)
 
         logger.info(f"Saved config file / 設定ファイルを保存しました: {config_path}")
-        exit(0)
+        # exit(0)
+        return
 
     if not os.path.exists(config_path):
         logger.info(f"{config_path} not found.")
-        exit(1)
+        # exit(1)
+        return
 
     logger.info(f"Loading settings from {config_path}...")
     with open(config_path, "r") as f:

@@ -1051,6 +1051,31 @@ def setup_parser() -> argparse.ArgumentParser:
 if __name__ == "__main__":
     parser = setup_parser()
 
+    # 引数の情報を出力
+    # argument_info = []
+    # for action_group in parser._action_groups:
+    #     for action in action_group._group_actions:
+    #         if action.dest != 'help':
+    #             _type = None
+    #             defType = type(action.default)
+    #             if defType is str:
+    #                 _type = "STRING"
+    #             elif defType is int:
+    #                 _type = "INT"
+    #             elif defType is float:
+    #                 _type = "FLOAT"
+    #             elif defType is bool:
+    #                 _type = "BOOLEAN"
+    #             else:
+    #                 _type = "CHECK"
+
+    #             argument_info.append(f'"{action.dest}":("{_type}", {{"default": {action.default}}}), # {action.help}')
+
+    # for arg in argument_info:
+    #     print(arg)
+
+    # exit()
+
     args = parser.parse_args()
     args = train_util.read_config_from_file(args, parser)
 
